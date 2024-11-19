@@ -69,6 +69,26 @@ class _ClientesScreenState extends State<ClientesScreen> {
     }
   }
 
+  String _mascararCpf(String cpf) {
+    return '***.***.${cpf.substring(cpf.length - 4)}';
+  }
+
+  String _mascararEmail(String email) {
+    final parts = email.split('@');
+    if (parts.length == 2) {
+      return '${parts[0].substring(0, 2)}***@${parts[1]}';
+    }
+    return email;
+  }
+
+  String _mascararTelefone(String telefone) {
+    return '****-****-${telefone.substring(telefone.length - 4)}';
+  }
+
+  String _mascararEndereco(String endereco) {
+    return endereco.split(',').first;
+  }
+
   Widget _buildClientesList(BoxConstraints constraints) {
     final listaAtual = selectedFilter == 'Todos'
         ? clientes
@@ -123,7 +143,7 @@ class _ClientesScreenState extends State<ClientesScreen> {
                     const SizedBox(width: 8),
                     Expanded(
                       child: Text(
-                        'Email: ${cliente.email}',
+                        'Email: ${_mascararEmail(cliente.email)}',
                         style: TextStyle(
                           color: Colors.green[800],
                           fontSize: 14,
@@ -138,7 +158,7 @@ class _ClientesScreenState extends State<ClientesScreen> {
                     const Icon(Icons.phone, color: Colors.green, size: 20),
                     const SizedBox(width: 8),
                     Text(
-                      'Telefone: ${cliente.telefone}',
+                      'Telefone: ${_mascararTelefone(cliente.telefone)}',
                       style: TextStyle(
                         color: Colors.green[800],
                         fontSize: 14,
@@ -152,7 +172,7 @@ class _ClientesScreenState extends State<ClientesScreen> {
                     const Icon(Icons.badge, color: Colors.green, size: 20),
                     const SizedBox(width: 8),
                     Text(
-                      'CPF: ${cliente.cpf}',
+                      'CPF: ${_mascararCpf(cliente.cpf)}',
                       style: TextStyle(
                         color: Colors.green[800],
                         fontSize: 14,
@@ -167,7 +187,7 @@ class _ClientesScreenState extends State<ClientesScreen> {
                     const SizedBox(width: 8),
                     Expanded(
                       child: Text(
-                        'Endereço: ${cliente.endereco}',
+                        'Endereço: ${_mascararEndereco(cliente.endereco)}',
                         style: TextStyle(
                           color: Colors.green[800],
                           fontSize: 14,

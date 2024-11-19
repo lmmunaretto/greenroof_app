@@ -71,7 +71,8 @@ class Produto {
       'laranja': 'assets/images/laranja.jpg',
       'ameixa': 'assets/images/ameixa.jpg',
       'kiwi': 'assets/images/kiwi.jpg',
-      'melão': 'assets/images/melao.jpg'
+      'melão': 'assets/images/melao.jpg',
+      'uva': 'assets/images/uva.jpg'
     };
     return assetImages[firstWord];
   }
